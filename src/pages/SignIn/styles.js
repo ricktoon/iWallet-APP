@@ -15,7 +15,7 @@ justify-content: center;
 
 export const Logo = styled.Image`
 margin-bottom: 60px;
-margin-top: -30px;
+
 `;
 
 export const AreaInput = styled.View`

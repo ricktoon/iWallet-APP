@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Platform} from 'react-native';
-import {Background,Container,Logo, AreaInput, Input, SubmitButton, SubmitText,} from './styles'
+import {Background,Container,Logo, AreaInput, Titulo,
+   Input, SubmitButton, SubmitText,} from './styles'
 
 
 export default function SignUp() {
@@ -13,7 +14,7 @@ export default function SignUp() {
           <Container
           behavior={Platform.OS==='ios' ? 'padding' : ''}
           >
-          
+           <Logo source={require('../../assets/logocad.png')}/>
 
             <AreaInput>
             <Input

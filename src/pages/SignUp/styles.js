@@ -14,7 +14,7 @@ justify-content: center;
 `;
 
 export const Logo = styled.Image`
-margin-bottom: 20px;
+margin-bottom: 60px;
 `;
 
 export const AreaInput = styled.View`
