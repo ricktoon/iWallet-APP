@@ -1,17 +1,11 @@
 import React, {useState} from 'react';
 import {Platform} from 'react-native';
-import {useNavigation} from '@react-navigation/native';
+import {Background,Container,Logo, AreaInput, Input, SubmitButton, SubmitText,} from './styles'
 
 
-import {Background,Container,Logo, AreaInput, Input, SubmitButton, SubmitText,
-LinkText,Link} from './styles'
-
-
-export default function SignIn() {
-
-  const navigation = useNavigation();
-  
-const[email, setEmail] = useState('');
+export default function SignUp() {
+ const[nome, setNome] = useState('');
+ const[email, setEmail] = useState('');
  const[password, setPassword] = useState('');
 
  return (
@@ -19,7 +13,17 @@ const[email, setEmail] = useState('');
           <Container
           behavior={Platform.OS==='ios' ? 'padding' : ''}
           >
-            <Logo source={require('../../assets/logo.png')}/>
+          
+
+            <AreaInput>
+            <Input
+            placeholder="Nome"
+            autoCorrect={false}
+            autoCapitalize="none"  
+            value={email}
+            onChangeText={(text) => setNome(text)}
+            />   
+            </AreaInput>
 
             <AreaInput>
             <Input
@@ -41,12 +45,10 @@ const[email, setEmail] = useState('');
             </AreaInput>
 
             <SubmitButton>
-              <SubmitText>Acessar</SubmitText>
+              <SubmitText>Cadastrar</SubmitText>
             </SubmitButton>
 
-            <Link onPress={()=> navigation.navigate('SignUp')}>
-             <LinkText> Crie sua conta!</LinkText>
-            </Link>
+            
           </Container>
     </Background>
   );
