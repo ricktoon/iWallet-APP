@@ -21,12 +21,11 @@ function AuthRoutes(){
         headerStyle:{
           backgroundColor:'#001d26',
           borderBottomColor:'#FFF',
-          borderBottomWidth: 1
+          borderBottomWidth: 1, 
         },
         headerTintColor: '#FFF',
         headerBackTitleVisible: false,
-        headerTitle:'Voltar'
-        
+        headerTitle:'Voltar'   
       }}
       />
     </AuthStack.Navigator>

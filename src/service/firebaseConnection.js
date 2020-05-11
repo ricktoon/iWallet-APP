@@ -3,14 +3,14 @@ import 'firebase/auth';
 import 'firebase/database'
 
 let firebaseConfig = {
-  apiKey: "AIzaSyDRJu6BoIWTxLfuxnCTW5ZMYd_w5AISarw",
-  authDomain: "meuapp-8127a.firebaseapp.com",
-  databaseURL: "https://meuapp-8127a.firebaseio.com",
-  projectId: "meuapp-8127a",
-  storageBucket: "meuapp-8127a.appspot.com",
-  messagingSenderId: "68010751360",
-  appId: "1:68010751360:web:1565a3e5422ee8c3f7fd65",
-  measurementId: "G-8DMX86ST5G"
+  apiKey: "AIzaSyB2x09hNC8xTi5fAMiSV9d2uI3dDn56C94",
+  authDomain: "carteiraapp.firebaseapp.com",
+  databaseURL: "https://carteiraapp.firebaseio.com",
+  projectId: "carteiraapp",
+  storageBucket: "carteiraapp.appspot.com",
+  messagingSenderId: "885499746946",
+  appId: "1:885499746946:web:89b491a2eea07a13a4329b",
+  measurementId: "G-4EVQW7CY92"
 };
 if(!firebase.apps.length){
 firebase.initializeApp(firebaseConfig);

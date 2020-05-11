@@ -13,12 +13,17 @@ export default function SignIn() {
   
  const[email, setEmail] = useState('');
  const[password, setPassword] = useState('');
- const{user} = useContext(AuthContext)
+ const{signIn} = useContext(AuthContext);
+
+function handleLogin(){
+  signIn(email, password);
+}
 
  return (
     <Background>
           <Container
           behavior={Platform.OS==='ios' ? 'padding' : ''}
+          enabled
           >
             <Logo source={require('../../assets/Logo.png')}/>
 
@@ -37,11 +42,12 @@ export default function SignIn() {
             placeholder="Senha"
             autoCorrect={false}
             autoCapitalize="none"  
+            value={password}
             onChangeText={(text) => setPassword(text)}
             />   
             </AreaInput>
 
-            <SubmitButton>
+            <SubmitButton onPress={handleLogin}>
               <SubmitText>Acessar</SubmitText>
             </SubmitButton>
 
