@@ -11,7 +11,7 @@ export default function SignUp() {
  const[email, setEmail] = useState('');
  const[password, setPassword] = useState('');
 
- const {signUp} = useContext(AuthContext);
+ const {signUp, loadingAuth} = useContext(AuthContext);
 
  function handleSignUp(){
    signUp(email,password,nome);
@@ -50,11 +50,19 @@ export default function SignUp() {
             autoCorrect={false}
             autoCapitalize="none"  
             onChangeText={(text) => setPassword(text)}
+            secureTextEntry={true}
             />   
             </AreaInput>
 
             <SubmitButton onPress={handleSignUp}>
-              <SubmitText>Cadastrar</SubmitText>
+            {
+                loadingAuth ? (
+                  <ActivityIndicator size={20} color="#001d26"/>
+                ) : (
+                  <SubmitText>Cadastrar</SubmitText>
+                )
+              }
+      
             </SubmitButton>
 
             

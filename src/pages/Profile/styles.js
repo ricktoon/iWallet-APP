@@ -5,6 +5,7 @@ export const Container = styled.View`
 flex: 1;
 background-color: #001d26;
 align-items: center;
+justify-content:center;
 `;
 
 export const Nome = styled.Text`
@@ -43,7 +44,7 @@ margin-bottom: 10px;
 
 export const LogoutText = styled.Text`
 font-size: 18px;
-color:#001d26;
+color:#FFF;
 font-weight: bold;`;
 
 

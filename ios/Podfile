@@ -44,8 +44,8 @@ def flipper_post_install(installer)
   end
 end
 
-target 'CarteiraAPP' do
-  # Pods for CarteiraAPP
+target 'iWallet' do
+  # Pods for iWallet
   pod 'FBLazyVector', :path => "../node_modules/react-native/Libraries/FBLazyVector"
   pod 'FBReactNativeSpec', :path => "../node_modules/react-native/Libraries/FBReactNativeSpec"
   pod 'RCTRequired', :path => "../node_modules/react-native/Libraries/RCTRequired"
@@ -79,7 +79,7 @@ target 'CarteiraAPP' do
 
   pod 'RNVectorIcons', :path => '../node_modules/react-native-vector-icons'
 
-  target 'CarteiraAPPTests' do
+  target 'iWalletTests' do
     inherit! :complete
     # Pods for testing
   end
@@ -96,10 +96,10 @@ target 'CarteiraAPP' do
   end
 end
 
-target 'CarteiraAPP-tvOS' do
-  # Pods for CarteiraAPP-tvOS
+target 'iWallet-tvOS' do
+  # Pods for iWallet-tvOS
 
-  target 'CarteiraAPP-tvOSTests' do
+  target 'iWallet-tvOSTests' do
     inherit! :search_paths
     # Pods for testing
   end

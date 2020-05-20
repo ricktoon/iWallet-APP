@@ -129,7 +129,7 @@ android {
     }
 
     defaultConfig {
-        applicationId "com.carteiraapp"
+        applicationId "com.ricktoon.iwallet"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
         versionCode 1

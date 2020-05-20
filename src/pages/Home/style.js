@@ -4,7 +4,10 @@ export const Background = styled.View`
 flex: 1;
 background-color: #001d26;
 `;
+export const Logo = styled.Image`
+margin-bottom:50px;
 
+`;
 export const Container = styled.View`
  margin-left: 15px;
  margin-bottom: 25px;

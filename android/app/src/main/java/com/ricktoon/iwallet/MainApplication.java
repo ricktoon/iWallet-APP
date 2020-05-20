@@ -1,4 +1,4 @@
-package com.carteiraapp;
+package com.ricktoon.iwallet;
 
 import android.app.Application;
 import android.content.Context;

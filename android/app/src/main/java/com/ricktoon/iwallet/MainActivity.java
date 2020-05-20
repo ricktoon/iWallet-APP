@@ -1,4 +1,4 @@
-package com.carteiraapp;
+package com.ricktoon.iwallet;
 
 import com.facebook.react.ReactActivity;
 
@@ -10,6 +10,6 @@ public class MainActivity extends ReactActivity {
    */
   @Override
   protected String getMainComponentName() {
-    return "CarteiraAPP";
+    return "iWallet";
   }
 }
