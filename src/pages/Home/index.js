@@ -1,11 +1,15 @@
 import React,{useContext, useState, useEffect} from 'react';
-import {AuthContext} from '../../contexts/auth';
-import { Alert } from 'react-native';
-import HistoricoList from '../../components/HistoricoList';
-import firebase from '../../service/firebaseConnection';
+import { Alert, TouchableOpacity, Platform } from 'react-native';
+import Icons from 'react-native-vector-icons/MaterialIcons';
 import { format, isPast } from 'date-fns';
 
-import {Background, Container, Nome, Saldo, Title, List, Logo  } from './style';
+
+import HistoricoList from '../../components/HistoricoList';
+import firebase from '../../service/firebaseConnection';
+import {AuthContext} from '../../contexts/auth';
+import DatePicker from '../../components/DatePicker';
+
+import {Background, Container, Nome, Saldo, Title, List, Logo, Area  } from './style';
 
 export default function Home() {
   const [historico , setHistorico] = useState([]);
@@ -14,6 +18,9 @@ export default function Home() {
   const {user} = useContext(AuthContext);
   const uid = user && user.uid;
 
+  const [newDate, setNewDate] = useState(new Date());
+  const [show, setShow] = useState(false);
+
   useEffect(( ) => {
       async function loadList(){
        await firebase.database().ref('users').child(uid).on('value', (snapshot) => {
@@ -21,7 +28,7 @@ export default function Home() {
         });
         await firebase.database().ref('historico')
         .child(uid)
-        .orderByChild('date').equalTo(format(new Date, 'dd/MM/yy'))
+        .orderByChild('date').equalTo(format(newDate, 'dd/MM/yy'))
         .limitToLast(10).on('value',(snapshot)=>{
           setHistorico([]);
           
@@ -37,7 +44,7 @@ export default function Home() {
         })
       }
      loadList(); 
-  },[]);
+  },[newDate]);
 
   function handleDelet(data){
     if(isPast(new Date(data.date))){
@@ -74,6 +81,19 @@ export default function Home() {
     })
   }
 
+  function handleShowPicker(){
+    setShow(true);
+  }
+
+  function handleClose(){
+    setShow(false);
+  }
+
+  const onChange=(date)=>{
+    setShow(Platform.OS === 'ios');
+    setNewDate(date);
+  }
+
  return (
   <Background>
     
@@ -84,7 +104,12 @@ export default function Home() {
         <Saldo>R$ {saldo.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}</Saldo>
         </Container>
         
-        <Title>Ultimas movimentações</Title>
+        <Area>
+            <TouchableOpacity onPress={handleShowPicker}>
+            <Icons name="event" color="#FFF" size={30}/>
+            </TouchableOpacity>
+            <Title>Ultimas movimentações</Title>
+        </Area>
 
         <List
           showsVerticalScrollIndicator={false}
@@ -93,6 +118,14 @@ export default function Home() {
           renderItem={ ({ item })=> (<HistoricoList data={item} deleteItem={handleDelet}/>)}
 
         />
+
+        {show && (
+          <DatePicker
+          onClose={handleClose}
+          date={newDate}
+          onChange={onChange}
+          />
+        )}
   </Background>
   );
 }

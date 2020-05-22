@@ -5,7 +5,7 @@ import { useNavigation } from '@react-navigation/native'
 import firebase from '../../service/firebaseConnection';
 import {AuthContext} from '../../contexts/auth';
 
-import {Background, Input, SubmitButton, SubmitText, Logo} from './style';
+import {Background, Input, SubmitButton, SubmitText, Logo, Titulo} from './style';
 import Picker from '../../components/Picker';
 
 
@@ -64,9 +64,9 @@ export default function New() {
  return (
    <TouchableNativeFeedback onPress={() => Keyboard.dismiss()}> 
    <Background> 
-     
+     <Titulo> Registre suas movimentações </Titulo>
      <SafeAreaView style={{alignItems: 'center'}}>
-     
+      
       <Input
       placeholder="Insira o valor"
       keyboardType="numeric"

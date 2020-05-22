@@ -13,6 +13,12 @@ export const Logo = styled.Image`
 margin-bottom: 20px;
 `;
 
+export const Titulo = styled.Text`
+font-size: 25px;
+color: #FFF;
+text-align: center;
+margin-bottom: 50px;
+`;
 
 export const Input  = styled.TextInput.attrs({
   placeholderTextColor:'#222'
