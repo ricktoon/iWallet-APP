@@ -1,7 +1,7 @@
 import React,{useContext, useState, useEffect} from 'react';
 import { Alert, TouchableOpacity, Platform } from 'react-native';
 import Icons from 'react-native-vector-icons/MaterialIcons';
-import { format, isPast } from 'date-fns';
+import { format, isBefore } from 'date-fns';
 
 
 import HistoricoList from '../../components/HistoricoList';
@@ -28,7 +28,7 @@ export default function Home() {
         });
         await firebase.database().ref('historico')
         .child(uid)
-        .orderByChild('date').equalTo(format(newDate, 'dd/MM/yy'))
+        .orderByChild('date').equalTo(format(newDate, 'dd/MM/yyyy'))
         .limitToLast(10).on('value',(snapshot)=>{
           setHistorico([]);
           
@@ -47,7 +47,14 @@ export default function Home() {
   },[newDate]);
 
   function handleDelet(data){
-    if(isPast(new Date(data.date))){
+    const [dayItem, monthItem, yearItem] = data.date.split('/');
+    const dateItem= new Date(`${yearItem}/${monthItem}/${dayItem}`);
+
+    const formatToDay = format(new Date(), 'dd/MM/yyyy');
+    const [dayToDay, monthToDay, yearToDay] = formatToDay.split('/');
+    const DateToDay = new Date(`${yearToDay}/${monthToDay}/${dayToDay}`);
+
+    if(isBefore(new Date(data.date))){
       alert('Você não pode deletar um registro antigo!')
       return;
     }
