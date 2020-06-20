@@ -1,5 +1,5 @@
 import React, {useState, useContext} from 'react';
-import {Platform} from 'react-native';
+import {Platform, ActivityIndicator} from 'react-native';
 import {AuthContext} from '../../contexts/auth'
 
 import {Background,Container,Logo, AreaInput,

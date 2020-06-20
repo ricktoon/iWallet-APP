@@ -19,7 +19,7 @@ export default function New() {
 
  function handleSubmit(){
    Keyboard.dismiss();
-   if(isNaN(parseFloat(valor)) || isNaN(parseFloat(descricao)) || tipo  === null ){
+   if( isNaN(parseFloat(valor))|| tipo  === null ){
      alert('Preencha todos os campos!');
      return;
    }
@@ -76,6 +76,7 @@ Valor: ${parseFloat(valor)}`,
       placeholder="Descrição"
       returnKeyType="next"
       value={descricao} 
+      maxLength= {50}
       onSubmitEditing={()=> Keyboard.dismiss()}
       onChangeText={(text) => setDescricao(text) }
       />
