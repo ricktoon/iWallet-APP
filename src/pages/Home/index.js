@@ -35,6 +35,7 @@ export default function Home() {
           snapshot.forEach((childItem)=>{
             let list = {
               key: childItem.key,
+              descricao: childItem.val().descricao,
               tipo: childItem.val().tipo,
               valor: childItem.val().valor,
               date: childItem.val().date,
@@ -52,15 +53,15 @@ export default function Home() {
 
     const formatToDay = format(new Date(), 'dd/MM/yyyy');
     const [dayToDay, monthToDay, yearToDay] = formatToDay.split('/');
-    const DateToDay = new Date(`${yearToDay}/${monthToDay}/${dayToDay}`);
+    const dateToDay = new Date(`${yearToDay}/${monthToDay}/${dayToDay}`);
 
-    if(isBefore(new Date(data.date))){
+    if(isBefore(dateItem , dateToDay)){
       alert('Você não pode deletar um registro antigo!')
       return;
     }
     Alert.alert(
       'Cuidado atenção',
-      `Você deseja excluir ${data.tipo} - Valor: ${data.valor}`,
+      `Você deseja excluir registro de ${data.tipo}, ${data.descricao} no valor de R$${data.valor} da sua carteira?`,
       [
         {
           text: 'Cancelar',

@@ -13,18 +13,21 @@ export default function New() {
     const navigation = useNavigation();
 
     const [valor, setValor] = useState('');
+    const [descricao, setDescricao] = useState('');
     const [tipo, setTipo] = useState(null);
     const { user: usuario } = useContext(AuthContext);
 
  function handleSubmit(){
    Keyboard.dismiss();
-   if(isNaN(parseFloat(valor)) || tipo ===null){
+   if(isNaN(parseFloat(valor)) || isNaN(parseFloat(descricao)) || tipo  === null ){
      alert('Preencha todos os campos!');
      return;
    }
    Alert.alert(
      'Confirmando dados',
-       `Tipo: ${tipo} - Valor: ${parseFloat(valor)}`,
+      `Descrição: ${descricao}
+Tipo: ${tipo}
+Valor: ${parseFloat(valor)}`,
        [
          {
            text: 'cancelar',
@@ -43,6 +46,7 @@ export default function New() {
 
    let key = await firebase.database().ref('historico').child(uid).push().key;
    await firebase.database().ref('historico').child(uid).child(key).set({
+    descricao: descricao,
     tipo: tipo,
     valor: parseFloat(valor),
     date: format(new Date(), 'dd/MM/yyyy')
@@ -57,6 +61,7 @@ export default function New() {
      user.child('saldo').set(saldo);
    });
    Keyboard.dismiss();
+   setDescricao('');
    setValor('');
    navigation.navigate('Home');
  }
@@ -67,6 +72,13 @@ export default function New() {
      <Titulo> Registre suas movimentações </Titulo>
      <SafeAreaView style={{alignItems: 'center'}}>
       
+     <Input
+      placeholder="Descrição"
+      returnKeyType="next"
+      value={descricao} 
+      onSubmitEditing={()=> Keyboard.dismiss()}
+      onChangeText={(text) => setDescricao(text) }
+      />
       <Input
       placeholder="Insira o valor"
       keyboardType="numeric"

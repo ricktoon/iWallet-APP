@@ -34,3 +34,9 @@ export const ValorText = styled.Text`
  font-size: 22px;
  font-weight: bold;
 `;
+
+export const DescText = styled.Text`
+ color:#000;
+ font-size: 22px;
+ font-weight: bold;
+`;

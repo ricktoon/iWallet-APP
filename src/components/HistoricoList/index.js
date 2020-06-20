@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Text, TouchableWithoutFeedback } from 'react-native';
 import Icon from 'react-native-vector-icons/Feather'
 
-import {Container, Tipo , IconView , TipoText, ValorText} from './styles';
+import {Container, Tipo , IconView , TipoText, ValorText, DescText} from './styles';
 
 export default function HistoricoList({data, deleteItem}) {
  return (
@@ -13,12 +13,15 @@ export default function HistoricoList({data, deleteItem}) {
           <Icon 
           name={data.tipo === 'despesa' ? 'arrow-down' : 'arrow-up'}
           color="#fff" 
-          size={20}/>
+          size={20}/>         
           <TipoText>{data.tipo}</TipoText>
         </IconView>
      </Tipo>
+     <DescText>
+      {data.descricao}
+     </DescText>
      <ValorText>
-       R$ {data.valor.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}
+     R$ {data.valor.toFixed(2).replace(/(\d)(?=(\d{3})+(?!\d))/g, '$1.')}
      </ValorText>
    </Container>
    </TouchableWithoutFeedback>
